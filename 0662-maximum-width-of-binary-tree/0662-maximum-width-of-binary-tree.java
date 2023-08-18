@@ -52,6 +52,12 @@
   */
 class Solution {
 
+    /**
+    * Follow the tree stucture 
+                    i
+                2*i   2*i+1
+     */
+
     public int widthOfBinaryTree(TreeNode root) {
         if (root == null) return 0;
         Queue<Pair<TreeNode, Integer>> queue = new LinkedList<>();
