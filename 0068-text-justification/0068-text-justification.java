@@ -10,13 +10,15 @@ class Solution {
             sb.append(words[i]);
             int currentLen = words[i].length();
             i++;
+            // add the elements till the length is < maxWidth
             while (i < n && (currentLen + (words[i].length() + 1) <= maxWidth)) {
                 currentLen += (words[i].length() + 1);
                 i++;
             }
-            // System.out.println(startIndex + " " + i);
-            //if only one word
+
+            // if it is the last line, make it left justiefied
             if (i == n) {
+                //find the number of space we have to append
                 int spaces = maxWidth - currentLen;
                 int j = startIndex + 1;
                 for (; j < n; j++) {
@@ -26,19 +28,20 @@ class Solution {
                     sb.append(" ");
                 }
             } else if (i - startIndex == 1) {
+                // if it is the only element in the line add the remaning spaces.
                 int spaces = maxWidth - sb.length();
                 for (int s = 0; s < spaces; s++) {
                     sb.append(" ");
                 }
             } else {
+                //find the number of gaps
                 int numVaccancies = i - startIndex - 1;
-                System.out.println(i + " " + startIndex);
+                // find the number of spaces
                 int spaces = maxWidth - currentLen;
-
+                // find how many space we have to fill in each gap
                 int equalDist = spaces / numVaccancies;
-                //System.out.println(equalDist + " " + numVaccancies);
+                // find the remaining spaces aka not equally distrubuted spaces
                 int remaining = spaces % numVaccancies;
-                // System.out.println(i + " " + startIndex + " " + numVaccancies + " " + equalDist + " " + remaining);
                 sb.append(" ");
 
                 if (remaining > 0) {
@@ -64,7 +67,6 @@ class Solution {
                     }
                 }
             }
-            System.out.println(sb.length());
             result.add(sb.toString());
         }
         return result;
