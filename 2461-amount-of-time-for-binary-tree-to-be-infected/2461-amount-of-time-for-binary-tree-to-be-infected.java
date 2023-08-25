@@ -14,6 +14,9 @@
  * }
  */
 class Solution {
+    /**
+     * Question is similar to https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/
+     */
     int max = 0;
 
     public int amountOfTime(TreeNode root, int start) {
