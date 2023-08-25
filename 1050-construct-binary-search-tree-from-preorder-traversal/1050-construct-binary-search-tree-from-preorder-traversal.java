@@ -14,6 +14,11 @@
  * }
  */
 class Solution {
+    /**
+     * We can simply build the tree using BST creation approach which takes O(NLogN).
+     *    But the following appraoch takes O(n) time to build the BST. using min,max appraoch.
+     */
+
     int preIndex = 0;
 
     public TreeNode bstFromPreorder(int[] preorder) {
@@ -24,7 +29,6 @@ class Solution {
         if (preIndex >= n) {
             return null;
         }
-
         int key = preorder[preIndex];
         TreeNode root = null;
         if (key > min && key < max) {
