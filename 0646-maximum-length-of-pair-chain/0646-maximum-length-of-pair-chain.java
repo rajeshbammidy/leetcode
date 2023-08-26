@@ -9,10 +9,9 @@ class Solution {
         return dp[ind][prev + 1] = Math.max(take, notTake);
     }
 
-    private HashMap<String, Integer> map;
+  
 
     public int findLongestChain(int[][] pairs) {
-        map = new HashMap<>();
         Arrays.sort(pairs, (a, b) -> a[0] - b[0]);
         int n = pairs.length;
         Integer[][] dp = new Integer[n + 1][n + 1];
