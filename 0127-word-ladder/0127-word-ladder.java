@@ -15,7 +15,6 @@ class Solution {
         while (!queue.isEmpty()) {
             int size = queue.size();
             distance++;
-            //System.out.println(queue);
             for (int i = 0; i < size; i++) {
                 String cur = queue.poll();
                 if (cur.equals(endWord)) return distance;
@@ -25,7 +24,6 @@ class Solution {
                     for (int j = 0; j < 26; j++) {
                         char ch = (char) ('a' + j);
                         sb.replace(c, c + 1, ch + "");
-                      //  System.out.println(sb.toString());
                         if (words.contains(sb.toString()) && !visited.contains(sb.toString())) {
                             visited.add(sb.toString());
                             queue.add(sb.toString());
