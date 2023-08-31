@@ -1,49 +1,39 @@
 class Solution {
-
-    static class Node {
-        Pair<Integer, Integer> pair;
-        int distance;
-
-        Node(Pair<Integer, Integer> pair, int distance) {
-            this.pair = pair;
-            this.distance = distance;
-        }
-    }
+    int dirx[] = { -1, 0, 1, 0 };
+    int diry[] = { 0, -1, 0, 1 };
 
     public int[][] updateMatrix(int[][] mat) {
-        HashSet<Pair<Integer, Integer>> visited = new HashSet<>();
-        Queue<Node> queue = new LinkedList<>();
-        int n = mat.length;
-        int m = mat[0].length;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
+        HashSet<Pair<Integer, Integer>> set = new HashSet<>();
+        Queue<Pair<Integer[], Integer>> queue = new LinkedList<>();
+        int m = mat.length;
+        int n = mat[0].length;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
                 if (mat[i][j] == 0) {
-                    Pair<Integer, Integer> pair = new Pair<>(i, j);
-                    visited.add(pair);
-                    Node node = new Node(pair, 0);
-                    queue.add(node);
+                    queue.add(new Pair<Integer[], Integer>(new Integer[] { i, j }, 0));
+                    set.add(new Pair<Integer, Integer>(i, j));
                 }
             }
         }
-
-        int dirx[] = { -1, 0, 1, 0 };
-        int diry[] = { 0, -1, 0, 1 };
         while (!queue.isEmpty()) {
-            Node node = queue.poll();
-            for (int i = 0; i < 4; i++) {
-                int nx = dirx[i] + node.pair.getKey();
-                int ny = diry[i] + node.pair.getValue();
-                if (isValid(nx, ny, n, m) && mat[nx][ny] != 0 && !visited.contains(new Pair(nx, ny))) {
-                    mat[nx][ny] = node.distance + 1;
-                    visited.add(new Pair(nx, ny));
-                    queue.add(new Node(new Pair(nx, ny), node.distance + 1));
+            Pair<Integer[], Integer> pair = queue.poll();
+            int cx = pair.getKey()[0];
+            int cy = pair.getKey()[1];
+            int distance = pair.getValue();
+            for (int i = 0; i < dirx.length; i++) {
+                int nx = cx + dirx[i];
+                int ny = cy + diry[i];
+                if (isValid(nx, ny, m, n) && mat[nx][ny] != 0 && !set.contains(new Pair<>(nx, ny))) {
+                    mat[nx][ny] = 1 + distance;
+                    queue.add(new Pair<Integer[], Integer>(new Integer[] { nx, ny }, 1 + distance));
+                    set.add(new Pair<Integer, Integer>(nx, ny));
                 }
             }
         }
         return mat;
     }
 
-    boolean isValid(int nx, int ny, int n, int m) {
-        return nx >= 0 && nx < n && ny >= 0 && ny < m;
+    boolean isValid(int x, int y, int m, int n) {
+        return x >= 0 && x < m && y >= 0 && y < n;
     }
 }
