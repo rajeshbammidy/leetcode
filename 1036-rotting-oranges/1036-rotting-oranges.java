@@ -6,7 +6,6 @@ class Solution {
         Queue<Pair<Integer, Integer>> queue = new LinkedList<>();
         int m = grid.length;
         int n = grid[0].length;
-       // if (m == 1 && n == 1 && grid[m - 1][n - 1] == 0) return 0;
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (grid[i][j] == 2) {
@@ -14,7 +13,7 @@ class Solution {
                 }
             }
         }
-        int timer = -1;
+        int timer = 0;
 
         while (!queue.isEmpty()) {
             int size = queue.size();
@@ -31,7 +30,7 @@ class Solution {
                     }
                 }
             }
-            timer++;
+            if (!queue.isEmpty()) timer++;
         }
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
@@ -40,7 +39,7 @@ class Solution {
                 }
             }
         }
-        return timer==-1?0:timer;
+        return timer;
     }
 
     boolean isValid(int x, int y, int m, int n) {
