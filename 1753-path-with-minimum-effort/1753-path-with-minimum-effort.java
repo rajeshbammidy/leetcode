@@ -13,7 +13,7 @@ class Solution {
         while (!minHeap.isEmpty()) {
             int[] top = minHeap.poll();
             int d = top[0], r = top[1], c = top[2];
-            if (d > dist[r][c]) continue; // this is an outdated version -> skip it
+           // if (d > dist[r][c]) continue; // this is an outdated version -> skip it
             // if (r == m - 1 && c == n - 1) return d; // Reach to bottom right
             for (int i = 0; i < 4; i++) {
                 int nr = r + DIR[i], nc = c + DIR[i + 1];
@@ -21,7 +21,9 @@ class Solution {
                     int newDist = Math.max(d, Math.abs(heights[nr][nc] - heights[r][c]));
                     if (dist[nr][nc] > newDist) {
                         dist[nr][nc] = newDist;
-                        minHeap.offer(new int[] { dist[nr][nc], nr, nc });
+                        System.out.println(nr+" "+nc);
+                        //if ((nr != m - 1) && (nc != n - 1))
+                         minHeap.offer(new int[] { dist[nr][nc], nr, nc });
                     }
                 }
             }
