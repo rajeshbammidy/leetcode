@@ -10,6 +10,9 @@ class Solution {
         }
     }
 
+    /**
+     *Intution: Vannila Dijkstra
+     */
     public int networkDelayTime(int[][] times, int n, int k) {
         int distance[] = new int[n];
         ArrayList<ArrayList<Node>> graph = new ArrayList<>();
@@ -23,7 +26,6 @@ class Solution {
             int wt = times[i][2];
             graph.get(u).add(new Node(v, wt));
         }
-        System.out.println(graph);
         Arrays.fill(distance, Integer.MAX_VALUE);
         distance[k - 1] = 0;
         PriorityQueue<Node> minHeap = new PriorityQueue<>((a, b) -> a.wt - b.wt);
@@ -41,7 +43,6 @@ class Solution {
                 }
             }
         }
-        System.out.println(Arrays.toString(distance));
         int max = 0;
         for (int x : distance) {
             max = Math.max(max, x);
