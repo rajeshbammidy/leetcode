@@ -1,5 +1,13 @@
 class Solution {
 
+    /**
+    
+    * Intution : Apply floyd warshall O(V^3) and find the distances for each node from every other node.
+    Once done with the above, traverse over the matrix to find the distance <= threshold.
+
+    Point to note is, if A-B distance is 5, B-A distance would also be 5.
+     */
+
     static class Node {
         int v;
         int wt;
@@ -12,7 +20,6 @@ class Solution {
 
     public int findTheCity(int n, int[][] edges, int distanceThreshold) {
         int m = edges.length;
-        int ways[][] = new int[n][n];
         int wts[][] = new int[n][n];
         for (int i = 0; i < n; i++) Arrays.fill(wts[i], Integer.MAX_VALUE);
         for (int i = 0; i < m; i++) {
