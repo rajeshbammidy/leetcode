@@ -1,5 +1,9 @@
 class Solution {
 
+    /**
+        Running Time : Klogn
+     */
+
     public int[] topKFrequent(int[] nums, int k) {
         HashMap<Integer, Integer> map = new HashMap<>();
         //Get the frequencies
