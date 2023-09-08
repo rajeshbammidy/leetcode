@@ -1,4 +1,10 @@
 class DetectSquares {
+    /**
+    * Intution square diagonal has the following property
+        Math.abs(x1-x2)==Math.abs(y1-y2);
+        in this approach we will find the diagonal point and we will find the other cordinates using that.
+    
+     */
     ArrayList<int[]> cords;
     HashMap<String, Integer> cordFreq;
 
