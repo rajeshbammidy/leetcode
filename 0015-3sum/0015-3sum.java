@@ -17,12 +17,12 @@ class Solution {
                 } else if (s + e < sum) {
                     start++;
                 } else {
-                    while ((start + 1) < end && nums[start + 1] == s) {
-                        start++;
-                    }
-                    while ((end - 1) > start && nums[end - 1] == e) {
-                        end--;
-                    }
+                    // while ((start + 1) < end && nums[start + 1] == s) {
+                    //     start++;
+                    // }
+                    // while ((end - 1) > start && nums[end - 1] == e) {
+                    //     end--;
+                    // }
                     List<Integer> temp = new ArrayList();
                     temp.add(nums[i]);
                     temp.add(s);
