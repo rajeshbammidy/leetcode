@@ -24,10 +24,12 @@ class Solution {
 
         boolean flag = true;
         while (flag) {
+            System.out.println("beg "+beg+" end:"+end);
             int mid = (int) (beg + ((double) (end - beg)) / 2);
-             if (end < 0) mid = -1;
-            System.out.println(mid);
-            int bmid = half - mid - 2;
+              if (end < 0) mid = -1;
+
+            int bmid = half - (mid + 1) - 1;
+            System.out.println(mid + " " + bmid);
             int aLeft = (mid) < 0 ? Integer.MIN_VALUE : nums1[mid];
             int aRight = (mid + 1) >= alen ? Integer.MAX_VALUE : nums1[mid + 1];
             int bLeft = (bmid) < 0 ? Integer.MIN_VALUE : nums2[bmid];
