@@ -8,7 +8,7 @@ class Solution {
         int half = (int) Math.ceil(n * 1.0 / 2);
         int alen = nums1.length;
         int blen = nums2.length;
-        System.out.println(blen);
+        //System.out.println(blen);
         if (alen == 0) {
             if ((blen & 1) == 0) {
                 int left = nums2[(blen / 2) - 1];
