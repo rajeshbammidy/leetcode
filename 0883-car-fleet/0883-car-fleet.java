@@ -1,6 +1,9 @@
 class Solution {
 
     /**
+    * There are n-cars going in a single lane and it is given that a car never can never pass the car before it.
+    To get the exact view sort the positions array and attach its speeds.
+    a car i can go match to car at (i+1) only if the time taken by the car at i is less than the time taken by the car at (i+1).If they can match the car at i reach to car at (i+1) and moves with the same speed. Now the car at i-2 has to check if it can match i+1 or not.
      */
     public int carFleet(int target, int[] position, int[] speed) {
         ArrayList<Pair<Integer, Integer>> list = new ArrayList();
@@ -24,7 +27,6 @@ class Solution {
                 }
             }
         }
-        //System.out.println(stack);
         return stack.size();
     }
 }
