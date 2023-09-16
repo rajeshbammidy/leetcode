@@ -14,7 +14,7 @@ class Solution {
             int[] top = minHeap.poll();
             int d = top[0], r = top[1], c = top[2];
            // if (d > dist[r][c]) continue; // this is an outdated version -> skip it
-            // if (r == m - 1 && c == n - 1) return d; // Reach to bottom right
+            if (r == m - 1 && c == n - 1) return d; // Reach to bottom right
             for (int i = 0; i < 4; i++) {
                 int nr = r + DIR[i], nc = c + DIR[i + 1];
                 if (nr >= 0 && nr < m && nc >= 0 && nc < n) {
