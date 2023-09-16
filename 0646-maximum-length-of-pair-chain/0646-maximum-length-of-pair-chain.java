@@ -17,7 +17,22 @@ class Solution {
     public int findLongestChain(int[][] pairs) {
         Arrays.sort(pairs, (a, b) -> a[0] - b[0]);
         int n = pairs.length;
-        Integer[][] dp = new Integer[n + 1][n + 1];
-        return recur(0, -1, pairs, n, dp);
+        int dp[] = new int[n];
+        // Integer[][] dp = new Integer[n + 1][n + 1];
+        // return recur(0, -1, pairs, n, dp);
+        Arrays.fill(dp, 1);
+        int maxLen = 1;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < i; j++) {
+                if (pairs[j][1] < pairs[i][0]) {
+                    if ((dp[j] + 1) > dp[i]) {
+                        dp[i] = dp[j] + 1;
+                        maxLen = Math.max(maxLen, dp[i]);
+                    }
+                }
+            }
+        }
+      //  System.out.println(Arrays.toString(dp));
+        return maxLen;
     }
 }
