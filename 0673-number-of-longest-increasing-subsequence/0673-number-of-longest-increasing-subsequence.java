@@ -1,5 +1,9 @@
 class Solution {
 
+    /**
+    Take away is: If you are reaching j in n ways, & if you are going from j to i.You will also will be able to reach i in n ways.
+    * */
+
     public int findNumberOfLIS(int[] nums) {
         int dp[] = new int[nums.length];
         int count[] = new int[nums.length];
