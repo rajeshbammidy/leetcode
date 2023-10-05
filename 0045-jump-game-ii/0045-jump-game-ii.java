@@ -1,21 +1,22 @@
 class Solution {
 
     public int jump(int[] nums) {
-        int maxLen = 0;
+        int maxJump = nums[0];
         int n = nums.length;
-        if (n == 1) return 0;
-        int i = 0;
-        int range = i + nums[i];
-        int maxRange = range;
-        int count = 1;
-        while (i <= range && i < n) {
-            maxRange = Math.max(maxRange, i + nums[i]);
-            if (i == range && i != (n - 1)) {
-                count++;
-                range = maxRange;
+        int curI = 1;
+        int jumps = 1;
+        int curMaxJump = nums[0];
+        while (curI < n) {
+            if (maxJump >= n - 1) return jumps;
+            if (curMaxJump < (curI + nums[curI])) {
+                curMaxJump = curI + nums[curI];
             }
-            i++;
+            if (curI == maxJump) {
+                maxJump = curMaxJump;
+                jumps++;
+            }
+            curI++;
         }
-        return count;
+        return 0;
     }
 }
