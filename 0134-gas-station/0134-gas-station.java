@@ -11,7 +11,7 @@ class Solution {
         int sum = 0;
         for (int i = 0; i < n; i++) {
             int diff = gas[i] - cost[i];
-            sum += diff;
+            sum+=diff;
             if (sum < 0) {
                 sum = 0;
                 startIndex = -1;
