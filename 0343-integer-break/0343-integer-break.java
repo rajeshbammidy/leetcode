@@ -10,11 +10,11 @@ class Solution {
         String key = i + "#" + sum;
         if (sum == n) return 1;
         if (i == n || sum > n) return -1;
-        if (map.containsKey(key)) return map.get(key);
+         if (map.containsKey(key)) return map.get(key);
         int take = 0;
         int notTake = 0;
         if (i <= n) {
-            take = i * recur(sum + i, i, n);
+            take = Math.max(i * recur(sum + i, i, n),i * recur(sum + i, i+1, n));
         }
         notTake = recur(sum, i + 1, n);
         map.put(key, Math.max(take, notTake));
