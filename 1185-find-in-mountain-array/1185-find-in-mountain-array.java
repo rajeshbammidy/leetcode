@@ -5,20 +5,6 @@
  *     public int get(int index) {}
  *     public int length() {}
  * }
-
-
-
-   System.out.println(beg + " " + mid + " " + end);
-            int lefDiff = mid - 0;
-            int rigDiff = length - mid;
-            if ((mountainArr.get(mid) == target) && (lefDiff >= 2 && islValid(mid, mountainArr)) || (rigDiff >= 2 && isrValid(mid, mountainArr))) {
-                ans = mid;
-                end = mid - 1;
-            } else if (lefDiff < 2) {
-                beg = mid + 1;
-            } else {
-                end = mid - 1;
-            }
  */
 
 class Solution {
@@ -29,6 +15,7 @@ class Solution {
         int end = length;
         int ans = -1;
         int mpeak = 0;
+        //find the mountain peak
         while (beg <= end) {
             int mid = beg + ((end - beg) >> 1);
             int midElement = mountainArr.get(mid);
@@ -43,12 +30,11 @@ class Solution {
         }
         beg = 0;
         end = mpeak;
-        System.out.println(mpeak);
         ans = -1;
+        //find the element on the left of mountain
         while (beg <= end) {
             int mid = beg + ((end - beg) >> 1);
             int midElement = mountainArr.get(mid);
-            System.out.println(midElement == target);
             if (midElement == target) {
                 ans = mid;
                 end = mid - 1;
@@ -61,10 +47,10 @@ class Solution {
         if (ans != -1) return ans;
         beg = mpeak;
         end = length;
+        //find the element on the right of mountain.
         while (beg <= end) {
             int mid = beg + ((end - beg) >> 1);
             int midElement = mountainArr.get(mid);
-            System.out.println(midElement == target);
             if (midElement == target) {
                 ans = mid;
                 end = mid - 1;
