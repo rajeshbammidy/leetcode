@@ -10,15 +10,7 @@ class Solution {
             }
         );
         for (int x : arr) {
-            int count = 0;
-            int temp = x;
-            while (x > 0) {
-                if ((x & 1) > 0) {
-                    count++;
-                }
-                x >>= 1;
-            }
-            pq.add(new Pair<Integer, Integer>(temp, count));
+            pq.add(new Pair<Integer, Integer>(x, Integer.bitCount(x)));
         }
         int ans[] = new int[arr.length];
         int idx = 0;
