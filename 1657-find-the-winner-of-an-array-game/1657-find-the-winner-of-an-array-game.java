@@ -26,7 +26,6 @@ class Solution {
                 list.addLast(b);
                 maxK = Math.max(maxK, map.get(a));
             }
-           // System.out.println(list);
         }
         for (int x : map.keySet()) {
             if (map.get(x) == k) return x;
